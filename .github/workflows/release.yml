@@ -23,7 +23,7 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
 
-    - name: Upload release
+    - name: Publish release
       run: ./gradlew publishAllPublicationsToMavenCentralRepository --no-configuration-cache -P version=${RELEASE_TAG:1}
       env:
         ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.OSSRH_USERNAME }}
@@ -32,9 +32,3 @@ jobs:
         ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.SIGNING_PASSWORD }}
         ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.SIGNING_KEY }}
         RELEASE_TAG: ${{ github.event.release.tag_name }}
-
-    - name: Publish release
-      run: ./gradlew closeAndReleaseRepository --no-configuration-cache
-      env:
-        ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.OSSRH_USERNAME }}
-        ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.OSSRH_PASSWORD }}
