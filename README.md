@@ -7,8 +7,8 @@ plugiin {
 }
 
 dependencies {
-    implementation("dev.dtuz.hilt:flexible-hilt-core:0.1")
-    ksp("dev.dtuz.hilt:flexible-hilt-compiler:0.1")
+    implementation("dev.dtuz.hilt:flexible-hilt-core:1.0.0")
+    ksp("dev.dtuz.hilt:flexible-hilt-compiler:1.0.0")
 }
 ```
 
