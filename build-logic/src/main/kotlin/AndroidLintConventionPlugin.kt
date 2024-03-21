@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2024 Dewan Tawsif
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
 import com.diffplug.gradle.spotless.SpotlessExtension
 import com.diffplug.gradle.spotless.SpotlessPlugin
 import flexiblehilt.buildlogic.libs
@@ -22,7 +29,14 @@ class AndroidLintConventionPlugin : Plugin<Project> {
                         ))
                     trimTrailingWhitespace()
                     endWithNewline()
-                    licenseHeaderFile(rootProject.file("build-logic/spotless/copyright.kt"))
+                }
+                format("kt") {
+                    target("**/*.kt")
+                    licenseHeaderFile(rootProject.file("build-logic/spotless/copyright.kt"), "(package |@file|import )")
+                }
+                format("kts") {
+                    target("**/*.kts")
+                    licenseHeaderFile(rootProject.file("build-logic/spotless/copyright.kt"), "(^(?![\\/ ]\\*).*$)")
                 }
                 format("misc") {
                     target("**/.gitignore", "**/*.xml")

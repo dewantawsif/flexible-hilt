@@ -1,3 +1,12 @@
+/*
+ * Copyright (c) 2024 Dewan Tawsif
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
+@file:Suppress("ktlint:standard:property-naming")
+
 package dagger.hilt.flexible.compiler
 
 import com.google.devtools.ksp.processing.CodeGenerator
@@ -30,7 +39,7 @@ private const val IncludeInFlexibleHiltGraphQualifiedName = "dagger.hilt.flexibl
 
 private const val TClassFormat = "%T::class"
 
-class DecoratorProcessor(private val codeGenerator: CodeGenerator): SymbolProcessor {
+class DecoratorProcessor(private val codeGenerator: CodeGenerator) : SymbolProcessor {
     override fun process(resolver: Resolver): List<KSAnnotated> {
         val (toProcess, unprocessed) = resolver
             .getSymbolsWithAnnotation(IncludeInFlexibleHiltGraphQualifiedName)
@@ -47,7 +56,7 @@ class DecoratorProcessor(private val codeGenerator: CodeGenerator): SymbolProces
                 .addAnnotation(
                     AnnotationSpec.builder(DaggerHiltInstallInClassName)
                         .addMember(TClassFormat, DaggerHiltSingletonComponentClassName)
-                        .build()
+                        .build(),
                 )
                 .addFunction(
                     FunSpec.builder("addItemToGraph")
@@ -56,12 +65,12 @@ class DecoratorProcessor(private val codeGenerator: CodeGenerator): SymbolProces
                         .addAnnotation(
                             AnnotationSpec.builder(FlexibleHiltItemKeyClassName)
                                 .addMember(TClassFormat, targetClassName)
-                                .build()
+                                .build(),
                         )
                         .addParameter("item", targetClassName)
                         .returns(FlexibleHiltItemClassName)
                         .addModifiers(KModifier.ABSTRACT)
-                        .build()
+                        .build(),
                 )
                 .addOriginatingKSFile(targetClassDeclaration.containingFile!!)
                 .build()
@@ -78,7 +87,7 @@ class DecoratorProcessor(private val codeGenerator: CodeGenerator): SymbolProces
         return unprocessed
     }
 
-    class Provider: SymbolProcessorProvider {
+    class Provider : SymbolProcessorProvider {
         override fun create(environment: SymbolProcessorEnvironment): SymbolProcessor {
             return DecoratorProcessor(environment.codeGenerator)
         }
