@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2024 Dewan Tawsif
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
 package me.tawsif.hilt.sample.ui
 
 import android.app.Activity
@@ -15,10 +22,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-
 @Composable
 fun FlexibleHiltSampleTheme(
-    content: @Composable () -> Unit
+    content: @Composable () -> Unit,
 ) {
     val darkTheme = isSystemInDarkTheme()
     val colorScheme = when {
@@ -41,6 +47,6 @@ fun FlexibleHiltSampleTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        content = content
+        content = content,
     )
 }

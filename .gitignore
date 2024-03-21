@@ -5,3 +5,4 @@ local.properties
 *.iml
 .idea/*
 !.idea/.name
+!.idea/copyright

@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2024 Dewan Tawsif
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ */
 package me.tawsif.hilt.sample
 
 import android.os.Bundle
@@ -26,13 +33,13 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier
                         .fillMaxSize()
                         .background(MaterialTheme.colorScheme.background),
-                    contentAlignment = Alignment.Center
+                    contentAlignment = Alignment.Center,
                 ) {
                     val pet: Pet = remember { getFromFlexibleHilt() }
                     Text(
                         text = "My pet is a ${pet.type}",
                         textAlign = TextAlign.Center,
-                        color = MaterialTheme.colorScheme.onBackground
+                        color = MaterialTheme.colorScheme.onBackground,
                     )
                 }
             }
