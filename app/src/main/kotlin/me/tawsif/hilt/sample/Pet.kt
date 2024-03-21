@@ -1,4 +1,4 @@
-package dev.dtuz.hilt.sample
+package me.tawsif.hilt.sample
 
 import dagger.hilt.flexible.FlexibleHiltItem
 import dagger.hilt.flexible.MakeFlexible

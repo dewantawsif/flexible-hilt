@@ -1,4 +1,4 @@
-package dev.dtuz.hilt.sample
+package me.tawsif.hilt.sample
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.flexible.getFromFlexibleHilt
-import dev.dtuz.hilt.sample.ui.theme.FlexibleHiltSampleTheme
+import me.tawsif.hilt.sample.ui.FlexibleHiltSampleTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

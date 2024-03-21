@@ -1,4 +1,4 @@
-package dev.dtuz.hilt.sample
+package me.tawsif.hilt.sample
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

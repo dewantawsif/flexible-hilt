@@ -1,4 +1,4 @@
-package dev.dtuz.hilt.sample.ui.theme
+package me.tawsif.hilt.sample.ui
 
 import android.app.Activity
 import android.os.Build

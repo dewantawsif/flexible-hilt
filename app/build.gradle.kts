@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "dev.dtuz.hilt.sample"
+    namespace = "me.tawsif.hilt.sample"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "dev.dtuz.hilt.sample"
+        applicationId = "me.tawsif.hilt.sample"
         minSdk = 23
         targetSdk = 34
         versionCode = 1
