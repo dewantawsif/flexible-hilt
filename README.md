@@ -7,8 +7,8 @@ plugiin {
 }
 
 dependencies {
-    implementation("me.tawsif.hilt:flexible-hilt-core:1.0.0")
-    ksp("me.tawsif.hilt:flexible-hilt-compiler:1.0.0")
+    implementation("me.tawsif.hilt:flexible-hilt-core:0.1.1")
+    ksp("me.tawsif.hilt:flexible-hilt-compiler:0.1.1")
 }
 ```
 
