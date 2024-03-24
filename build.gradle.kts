@@ -7,3 +7,7 @@ plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.maven.publish) apply false
 }
+
+tasks.register<Delete>("clean") {
+    delete(rootProject.layout.buildDirectory.asFile.get())
+}
