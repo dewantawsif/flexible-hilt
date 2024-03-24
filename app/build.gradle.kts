@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.dagger.hilt)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
+    id("flexiblehilt.lint")
 }
 
 android {
