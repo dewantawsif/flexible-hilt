@@ -9,8 +9,8 @@ plugiin {
 }
 
 dependencies {
-    implementation("me.tawsif.hilt:flexible-hilt-core:0.1.1")
-    ksp("me.tawsif.hilt:flexible-hilt-compiler:0.1.1")
+    implementation("me.tawsif.hilt:flexible-hilt-core:0.2.1")
+    ksp("me.tawsif.hilt:flexible-hilt-compiler:0.2.1")
 }
 ```
 
