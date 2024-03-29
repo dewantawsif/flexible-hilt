@@ -1,4 +1,6 @@
 ## Guide
+### Compatibility
+The library requires your app's `minSdk` to be 21+
 
 ### Add dependencies
 ```kotlin
