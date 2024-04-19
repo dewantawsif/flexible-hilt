@@ -5,7 +5,7 @@ kotlin = "1.9.23"
 kotlinpoet = "1.16.0"
 ksp = "1.9.23-1.0.20"
 
-activity-compose = "1.8.2"
+activity-compose = "1.9.0"
 androidx-core-ktx = "1.13.0"
 compose-bom = "2024.04.00"
 compose-compiler = "1.5.11"
