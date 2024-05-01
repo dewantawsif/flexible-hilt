@@ -28,17 +28,6 @@ interface Human: FlexibleHiltItem {
 }
 ```
 
-### Initialize
-```kotlin
-@HiltAndroidApp
-class App: Application() {
-    override fun onCreate() {
-        super.onCreate()
-        FlexibleHilt.init(this)
-    }
-}
-```
-
 ### Enjoy the flexibility!
 ```kotlin
 fun printPetType(pet: Pet = getFromFlexibleHilt()) {
