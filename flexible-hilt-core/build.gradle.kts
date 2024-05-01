@@ -32,6 +32,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.startup.runtime)
     implementation(libs.dagger.hilt.android)
     ksp(libs.dagger.hilt.compiler)
 }
