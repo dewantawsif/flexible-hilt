@@ -9,7 +9,6 @@ activity-compose = "1.9.0"
 androidx-core-ktx = "1.13.1"
 androidx-startup-runtime = "1.1.1"
 compose-bom = "2024.05.00"
-compose-compiler = "1.5.14"
 lifecycle-runtime-ktx = "2.8.0"
 
 maven-publish = "0.28.0"
@@ -28,7 +27,6 @@ activity-compose = { module = "androidx.activity:activity-compose", version.ref 
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core-ktx" }
 androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "androidx-startup-runtime" }
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
-compose-compiler = { module = "androidx.compose.compiler:compiler", version.ref = "compose-compiler" }
 compose-material3 = { module = "androidx.compose.material3:material3" }
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
@@ -40,6 +38,7 @@ ktlint-core = { module = "com.pinterest.ktlint:ktlint-cli", version.ref = "ktlin
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-gradle" }
 android-library = { id = "com.android.library", version.ref = "android-gradle" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "dagger-hilt" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
