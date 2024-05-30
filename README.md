@@ -5,12 +5,12 @@ The library requires your app's `minSdk` to be 21+
 ### Add dependencies
 ```kotlin
 plugiin {
-    id("com.google.devtools.ksp") version "1.9.20-1.0.14"
+    id("com.google.devtools.ksp") version "2.0.0-1.0.21"
 }
 
 dependencies {
-    implementation("me.tawsif.hilt:flexible-hilt-core:0.3.0")
-    ksp("me.tawsif.hilt:flexible-hilt-compiler:0.3.0")
+    implementation("me.tawsif.hilt:flexible-hilt-core:0.4.0")
+    ksp("me.tawsif.hilt:flexible-hilt-compiler:0.4.0")
 }
 ```
 
