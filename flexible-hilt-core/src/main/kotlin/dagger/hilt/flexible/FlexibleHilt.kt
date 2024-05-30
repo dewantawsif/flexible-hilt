@@ -9,16 +9,23 @@ package dagger.hilt.flexible
 
 import android.content.Context
 import dagger.hilt.android.EntryPointAccessors
+import dagger.hilt.flexible.internal.isHiltAndroidApp
 import javax.inject.Provider
+
+private const val NOT_HILT_APP_MSG = "[Application] is missing [@HiltAndroidApp] annotation, " +
+    "failed to initialize [FlexibleHilt]"
+private const val UNINITIALIZED_MESSAGE = "FlexibleHilt not initialized"
 
 object FlexibleHilt {
     private var graph: FlexibleHiltGraphEntryPoint? = null
 
     fun init(context: Context) {
+        if (graph != null) return
+        if (!context.isHiltAndroidApp) error(NOT_HILT_APP_MSG)
         graph = EntryPointAccessors.fromApplication<FlexibleHiltGraphEntryPoint>(context)
     }
 
     fun getItems(): Map<Class<out FlexibleHiltItem>, Provider<FlexibleHiltItem>> {
-        return requireNotNull(graph) { "FlexibleHilt not initialized" }.items()
+        return requireNotNull(graph) { UNINITIALIZED_MESSAGE }.items()
     }
 }

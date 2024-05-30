@@ -8,10 +8,23 @@
 package dagger.hilt.flexible
 
 import android.content.Context
+import android.util.Log
 import androidx.startup.Initializer
+import dagger.hilt.flexible.internal.isHiltAndroidApp
 
+private val LOG_TAG = FlexibleHiltInitializer::class.simpleName
+
+private const val NOT_HILT_APP_MSG = "[Application] is missing [@HiltAndroidApp] annotation, " +
+    "automatic initialization of [FlexibleHilt] being skipped. " +
+    "To initialize manually, execute FlexibleHilt.init(applicationContext)"
+
+@Suppress("UNUSED")
 class FlexibleHiltInitializer : Initializer<Unit> {
     override fun create(context: Context) {
+        if (!context.isHiltAndroidApp) {
+            Log.w(LOG_TAG, NOT_HILT_APP_MSG)
+            return
+        }
         FlexibleHilt.init(context)
     }
 
