@@ -6,10 +6,8 @@ kotlinpoet = "1.17.0"
 ksp = "2.0.0-1.0.21"
 
 activity-compose = "1.9.0"
-androidx-core-ktx = "1.13.1"
 androidx-startup-runtime = "1.1.1"
 compose-bom = "2024.05.00"
-lifecycle-runtime-ktx = "2.8.1"
 
 maven-publish = "0.28.0"
 
@@ -24,13 +22,9 @@ kotlinpoet-ksp = { module = "com.squareup:kotlinpoet-ksp", version.ref = "kotlin
 ksp-api = { module = "com.google.devtools.ksp:symbol-processing-api", version.ref = "ksp" }
 
 activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }
-androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core-ktx" }
 androidx-startup-runtime = { module = "androidx.startup:startup-runtime", version.ref = "androidx-startup-runtime" }
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
 compose-material3 = { module = "androidx.compose.material3:material3" }
-compose-ui = { module = "androidx.compose.ui:ui" }
-compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
-lifecycle-runtime-ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
 
 spotless-gradle = { group = "com.diffplug.spotless", name = "spotless-plugin-gradle", version.ref = "spotless" }
 ktlint-core = { module = "com.pinterest.ktlint:ktlint-cli", version.ref = "ktlint-core" }

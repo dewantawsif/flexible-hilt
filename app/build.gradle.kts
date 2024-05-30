@@ -51,11 +51,7 @@ dependencies {
     ksp(libs.dagger.hilt.compiler)
 
     implementation(libs.activity.compose)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.lifecycle.runtime.ktx)
 
     implementation(platform(libs.compose.bom))
     implementation(libs.compose.material3)
-    implementation(libs.compose.ui)
-    implementation(libs.compose.ui.tooling.preview)
 }
