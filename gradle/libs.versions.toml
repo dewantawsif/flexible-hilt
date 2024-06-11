@@ -1,5 +1,5 @@
 [versions]
-android-gradle = "8.4.1"
+android-gradle = "8.4.2"
 dagger-hilt = "2.51.1"
 kotlin = "2.0.0"
 kotlinpoet = "1.17.0"
