@@ -15,14 +15,12 @@ dependencies {
 ```
 
 ### Prepare class/interface
-Make your base class/interface inherit `FlexibleHiltItem ` and annotate them with `MakeFlexible`
+Make your base class/interface inherit `FlexibleHiltItem `
 ```kotlin
-@MakeFlexible
 class Pet @Inject constructor(): FlexibleHiltItem {
     val type = "dog"
 }
 
-@MakeFlexible
 interface Human: FlexibleHiltItem {
     val profession: String
 }
