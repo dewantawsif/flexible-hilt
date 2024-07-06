@@ -11,6 +11,7 @@ compose-bom = "2024.06.00"
 
 maven-publish = "0.29.0"
 
+detekt = "1.23.6"
 spotless = "6.25.0"
 ktlint-core = "1.3.1"
 
@@ -26,6 +27,7 @@ androidx-startup-runtime = { module = "androidx.startup:startup-runtime", versio
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
 compose-material3 = { module = "androidx.compose.material3:material3" }
 
+detekt-gradle = { group = "io.gitlab.arturbosch.detekt", name = "detekt-gradle-plugin", version.ref = "detekt" }
 spotless-gradle = { group = "com.diffplug.spotless", name = "spotless-plugin-gradle", version.ref = "spotless" }
 ktlint-core = { module = "com.pinterest.ktlint:ktlint-cli", version.ref = "ktlint-core" }
 

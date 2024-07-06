@@ -8,15 +8,26 @@
 import com.diffplug.gradle.spotless.SpotlessExtension
 import com.diffplug.gradle.spotless.SpotlessPlugin
 import flexiblehilt.buildlogic.libs
+import io.gitlab.arturbosch.detekt.Detekt
+import io.gitlab.arturbosch.detekt.DetektPlugin
+import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.findByType
+import org.gradle.kotlin.dsl.withType
+
+private const val kotlinFiles = "**/*.kt"
+private const val resourceFiles = "**/resources/**"
+private const val buildFiles = "**/build/**"
+private const val generatedFiles = "**/generated/**"
+private const val scriptsFiles = "**/*.kts"
 
 @Suppress("UNUSED")
 class AndroidLintConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             pluginManager.apply(SpotlessPlugin::class.java)
+            pluginManager.apply(DetektPlugin::class.java)
 
             extensions.findByType(SpotlessExtension::class)?.apply {
                 kotlin {
@@ -43,6 +54,22 @@ class AndroidLintConventionPlugin : Plugin<Project> {
                     targetExclude("**/build/**/*.xml")
                     trimTrailingWhitespace()
                     endWithNewline()
+                }
+            }
+            extensions.findByType(DetektExtension::class)?.apply {
+                parallel = true
+                config.setFrom(rootProject.file("build-logic/detekt/config.yml"))
+                buildUponDefaultConfig = true
+                ignoreFailures = false
+            }
+
+            tasks.withType<Detekt>().configureEach {
+                include(kotlinFiles)
+                exclude(resourceFiles, buildFiles, generatedFiles, scriptsFiles)
+                reports {
+                    html.required.set(true)
+                    xml.required.set(false)
+                    txt.required.set(false)
                 }
             }
         }

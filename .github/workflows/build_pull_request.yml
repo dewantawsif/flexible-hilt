@@ -26,4 +26,4 @@ jobs:
 
       # TODO: Run instrumental tests
       - name: Build sample app
-        run: ./gradlew spotlessCheck assembleDebug
+        run: ./gradlew detekt spotlessCheck assembleDebug

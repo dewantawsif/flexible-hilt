@@ -12,6 +12,7 @@ plugins {
 group = "flexiblehilt.buildlogic"
 
 dependencies {
+    implementation(libs.detekt.gradle)
     implementation(libs.spotless.gradle)
 
     // These allow us to reference the dependency catalog inside of our compiled plugins
