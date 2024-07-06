@@ -10,8 +10,8 @@ package dagger.hilt.flexible
 inline fun <reified T : FlexibleHiltItem> getFromFlexibleHilt(): T {
     return FlexibleHilt.getItems()[T::class.java]?.get() as? T
         ?: error(
-            "Couldn't find ${T::class.java} in 'FlexibleHiltGraph'. Make sure you have annotated " +
-                "the base class/interface with [MakeFlexible] and it inherits [FlexibleHiltItem]",
+            "Couldn't find ${T::class.java} in 'FlexibleHiltGraph'. " +
+                "Make sure that it inherits [FlexibleHiltItem]",
         )
 }
 
