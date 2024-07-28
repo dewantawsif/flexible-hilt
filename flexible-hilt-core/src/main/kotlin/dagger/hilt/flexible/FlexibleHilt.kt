@@ -17,15 +17,15 @@ private const val NOT_HILT_APP_MSG = "[Application] is missing [@HiltAndroidApp]
 private const val UNINITIALIZED_MESSAGE = "FlexibleHilt not initialized"
 
 object FlexibleHilt {
-    private var graph: FlexibleHiltGraphEntryPoint? = null
+    private var entryPoint: FlexibleHiltEntryPoint? = null
 
     fun init(context: Context) {
-        if (graph != null) return
+        if (entryPoint != null) return
         if (!context.isHiltAndroidApp) error(NOT_HILT_APP_MSG)
-        graph = EntryPointAccessors.fromApplication<FlexibleHiltGraphEntryPoint>(context)
+        entryPoint = EntryPointAccessors.fromApplication<FlexibleHiltEntryPoint>(context)
     }
 
     fun getItems(): Map<Class<out FlexibleHiltItem>, Provider<FlexibleHiltItem>> {
-        return requireNotNull(graph) { UNINITIALIZED_MESSAGE }.items()
+        return requireNotNull(entryPoint) { UNINITIALIZED_MESSAGE }.items()
     }
 }

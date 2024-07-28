@@ -14,6 +14,6 @@ import javax.inject.Provider
 
 @EntryPoint
 @InstallIn(SingletonComponent::class)
-internal interface FlexibleHiltGraphEntryPoint {
+internal interface FlexibleHiltEntryPoint {
     fun items(): Map<Class<out FlexibleHiltItem>, @JvmSuppressWildcards Provider<FlexibleHiltItem>>
 }
