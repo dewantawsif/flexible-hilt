@@ -28,12 +28,12 @@ interface Human: FlexibleHiltItem {
 
 ### Enjoy the flexibility!
 ```kotlin
-fun printPetType(pet: Pet = getFromFlexibleHilt()) {
+fun printPetType(pet: Pet = FlexibleHilt.get()) {
     println(pet.type)
 }
 ```
 
-_Note: There's also `lazyFromFlexibleHilt()` which you can use to get a lazy instance of the class._
+_Note: There's also `FlexibleHilt.getLazy()` which you can use to get a lazy instance of the class._
 _Helpful in `Activity` classes where you can only use hilt classes after `super.onCreate()`_
 
 ## License

@@ -25,6 +25,16 @@ object FlexibleHilt {
         entryPoint = EntryPointAccessors.fromApplication<FlexibleHiltEntryPoint>(context)
     }
 
+    inline fun <reified T : FlexibleHiltItem> get(): T {
+        return getItems()[T::class.java]?.get() as? T
+            ?: error(
+                "Couldn't find provided class in 'FlexibleHiltGraph'. " +
+                    "Make sure that it inherits 'FlexibleHiltItem'",
+            )
+    }
+
+    inline fun <reified T : FlexibleHiltItem> getLazy(): Lazy<T> = lazy { get() }
+
     fun getItems(): Map<Class<out FlexibleHiltItem>, Provider<FlexibleHiltItem>> {
         return requireNotNull(entryPoint) { UNINITIALIZED_MESSAGE }.items()
     }

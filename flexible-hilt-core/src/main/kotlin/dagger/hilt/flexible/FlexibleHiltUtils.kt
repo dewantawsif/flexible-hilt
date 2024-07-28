@@ -7,14 +7,24 @@
  */
 package dagger.hilt.flexible
 
+@Deprecated(
+    message = "Use FlexibleHilt.get instead",
+    replaceWith = ReplaceWith(
+        expression = "FlexibleHilt.get<T>()",
+        imports = arrayOf("dagger.hilt.flexible.FlexibleHilt"),
+    ),
+)
 inline fun <reified T : FlexibleHiltItem> getFromFlexibleHilt(): T {
-    return FlexibleHilt.getItems()[T::class.java]?.get() as? T
-        ?: error(
-            "Couldn't find ${T::class.java} in 'FlexibleHiltGraph'. " +
-                "Make sure that it inherits [FlexibleHiltItem]",
-        )
+    return FlexibleHilt.get<T>()
 }
 
+@Deprecated(
+    message = "Use FlexibleHilt.getLazy instead",
+    replaceWith = ReplaceWith(
+        expression = "FlexibleHilt.getLazy<T>()",
+        imports = arrayOf("dagger.hilt.flexible.FlexibleHilt"),
+    ),
+)
 inline fun <reified T : FlexibleHiltItem> lazyFromFlexibleHilt(): Lazy<T> {
-    return lazy { getFromFlexibleHilt() }
+    return FlexibleHilt.getLazy<T>()
 }

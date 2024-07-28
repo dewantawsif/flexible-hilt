@@ -6,8 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Added
+- `FlexibleHilt.get()` and `FlexibleHilt.getLazy()`
+
 ### Deprecated
 - `MakeFlexible` annotation, as it is no longer needed due to recent compiler changes
+- `getFromFlexibleHilt()` and `lazyFromFlexibleHilt()` in favor of `FlexibleHilt.get()` and `FlexibleHilt.getLazy()`
 
 ## [v0.4.0]
 ### Changed

@@ -5,7 +5,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
-package me.tawsif.hilt.sample
+package me.tawsif.hilt.sample.models
 
 import dagger.hilt.flexible.FlexibleHiltItem
 import javax.inject.Inject

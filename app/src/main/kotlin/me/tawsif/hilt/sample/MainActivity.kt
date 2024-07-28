@@ -20,11 +20,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.flexible.getFromFlexibleHilt
+import dagger.hilt.flexible.FlexibleHilt
+import me.tawsif.hilt.sample.models.Human
+import me.tawsif.hilt.sample.models.Pet
 import me.tawsif.hilt.sample.ui.FlexibleHiltSampleTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private val human: Human by FlexibleHilt.getLazy()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -35,9 +39,9 @@ class MainActivity : ComponentActivity() {
                         .background(MaterialTheme.colorScheme.background),
                     contentAlignment = Alignment.Center,
                 ) {
-                    val pet: Pet = remember { getFromFlexibleHilt() }
+                    val pet: Pet = remember { FlexibleHilt.get() }
                     Text(
-                        text = "My pet is a ${pet.type}",
+                        text = "${human.name}'s pet is a ${pet.type}",
                         textAlign = TextAlign.Center,
                         color = MaterialTheme.colorScheme.onBackground,
                     )
