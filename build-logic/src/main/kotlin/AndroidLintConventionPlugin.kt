@@ -72,6 +72,16 @@ class AndroidLintConventionPlugin : Plugin<Project> {
                     txt.required.set(false)
                 }
             }
+
+            listOf(
+                "preBuild", // Android modules
+                "compileKotlin", // Non-Android modules
+            ).forEach { name ->
+                tasks.findByName(name)?.apply {
+                    dependsOn("detekt")
+                    dependsOn("spotlessCheck")
+                }
+            }
         }
     }
 }
