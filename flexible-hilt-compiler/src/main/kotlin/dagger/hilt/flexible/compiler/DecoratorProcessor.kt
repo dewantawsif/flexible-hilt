@@ -20,6 +20,7 @@ import com.google.devtools.ksp.processing.SymbolProcessorEnvironment
 import com.google.devtools.ksp.processing.SymbolProcessorProvider
 import com.google.devtools.ksp.symbol.KSAnnotated
 import com.google.devtools.ksp.symbol.KSClassDeclaration
+import com.google.devtools.ksp.symbol.KSDeclarationContainer
 import com.google.devtools.ksp.symbol.KSFile
 import com.squareup.kotlinpoet.AnnotationSpec
 import com.squareup.kotlinpoet.ClassName
@@ -46,7 +47,11 @@ private const val TClassFormat = "%T::class"
 
 private val GeneratedDateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 
-private const val OutputPackage = "dagger_hilt_flexible"
+private const val OutputPackagePrefix = "flexible_hilt"
+
+private const val FormattedGeneratedMessage = "Generated %L by flexible-hilt. DO NOT EDIT!"
+
+private const val EmptyClassName = "`_`"
 
 class DecoratorProcessor(private val codeGenerator: CodeGenerator) : SymbolProcessor {
     override fun process(resolver: Resolver): List<KSAnnotated> {
@@ -55,27 +60,18 @@ class DecoratorProcessor(private val codeGenerator: CodeGenerator) : SymbolProce
             ?.asType(emptyList())
 
         resolver.getNewFiles().flatMap { file ->
-            file.declarations.mapNotNull { declaration ->
-                if (
-                    declaration is KSClassDeclaration &&
-                    declaration.superTypes.any { it.resolve() == flexibleHiltItemType }
-                ) {
-                    declaration
-                } else {
-                    null
-                }
+            file.getAllClassDeclarations().filter { declaration ->
+                declaration.superTypes.any { it.resolve() == flexibleHiltItemType }
             }
         }
             .forEach { declaration ->
-                val itemCleanPackageName = declaration.packageName.asString()
-                    .replace("_", "__")
-                    .replace(".", "_")
+                val itemPackageName = declaration.packageName.asString()
                 val itemClassName = declaration.toClassName()
-                val interfaceName = "${itemCleanPackageName}_${declaration.simpleName.asString()}"
+                val interfaceName = itemClassName.simpleNames.joinToString("_")
 
-                FileSpec.builder(OutputPackage, interfaceName)
+                FileSpec.builder("${OutputPackagePrefix}.$itemPackageName", interfaceName)
                     .addFileComment(
-                        "Generated %L by flexible-hilt. DO NOT EDIT!",
+                        FormattedGeneratedMessage,
                         LocalDateTime.now().format(GeneratedDateTimeFormatter),
                     )
                     .addHiltModule(interfaceName, itemClassName, declaration.containingFile!!)
@@ -87,6 +83,12 @@ class DecoratorProcessor(private val codeGenerator: CodeGenerator) : SymbolProce
             }
 
         return emptyList()
+    }
+
+    private fun KSDeclarationContainer.getAllClassDeclarations(): Sequence<KSClassDeclaration> {
+        return declarations.flatMap {
+            if (it is KSClassDeclaration) it.getAllClassDeclarations() + it else sequenceOf()
+        }
     }
 
     private fun FileSpec.Builder.addHiltModule(
@@ -102,7 +104,7 @@ class DecoratorProcessor(private val codeGenerator: CodeGenerator) : SymbolProce
                     .build(),
             )
             .addFunction(
-                FunSpec.builder("`_`")
+                FunSpec.builder(EmptyClassName)
                     .addAnnotation(DaggerBindsClassName)
                     .addAnnotation(DaggerMultiBindingsIntoMapClassName)
                     .addAnnotation(
@@ -110,7 +112,7 @@ class DecoratorProcessor(private val codeGenerator: CodeGenerator) : SymbolProce
                             .addMember(TClassFormat, itemClassName)
                             .build(),
                     )
-                    .addParameter("`_`", itemClassName)
+                    .addParameter(EmptyClassName, itemClassName)
                     .returns(FlexibleHiltItemClassName)
                     .addModifiers(KModifier.ABSTRACT)
                     .build(),
