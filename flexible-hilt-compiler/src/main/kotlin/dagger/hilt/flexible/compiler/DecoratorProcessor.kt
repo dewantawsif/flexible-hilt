@@ -69,7 +69,7 @@ class DecoratorProcessor(private val codeGenerator: CodeGenerator) : SymbolProce
                 val itemClassName = declaration.toClassName()
                 val interfaceName = itemClassName.simpleNames.joinToString("_")
 
-                FileSpec.builder("${OutputPackagePrefix}.$itemPackageName", interfaceName)
+                FileSpec.builder("$OutputPackagePrefix.$itemPackageName", interfaceName)
                     .addFileComment(
                         FormattedGeneratedMessage,
                         LocalDateTime.now().format(GeneratedDateTimeFormatter),
