@@ -3,19 +3,21 @@
 The library requires your app's `minSdk` to be 21+
 
 ### Add dependencies
+- KSP (https://github.com/google/ksp)
+
 ```kotlin
 plugiin {
-    id("com.google.devtools.ksp") version "2.0.0-1.0.21"
+    alias(libs.plugins.ksp)
 }
 
 dependencies {
-    implementation("me.tawsif.hilt:flexible-hilt-core:0.4.0")
-    ksp("me.tawsif.hilt:flexible-hilt-compiler:0.4.0")
+    implementation("me.tawsif.hilt:flexible-hilt-core:0.5.0")
+    ksp("me.tawsif.hilt:flexible-hilt-compiler:0.5.0")
 }
 ```
 
 ### Prepare class/interface
-Make your base class/interface inherit `FlexibleHiltItem `
+Make your base class/interface inherit `FlexibleHiltItem`
 ```kotlin
 class Pet @Inject constructor(): FlexibleHiltItem {
     val type = "dog"
