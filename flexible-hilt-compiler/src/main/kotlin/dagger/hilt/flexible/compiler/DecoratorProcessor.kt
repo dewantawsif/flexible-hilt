@@ -47,7 +47,7 @@ private const val TClassFormat = "%T::class"
 
 private val GeneratedDateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
 
-private const val OutputPackagePrefix = "flexible_hilt"
+private const val OutputClassPrefix = "_FlexibleHilt_"
 
 private const val FormattedGeneratedMessage = "Generated %L by flexible-hilt. DO NOT EDIT!"
 
@@ -67,9 +67,9 @@ class DecoratorProcessor(private val codeGenerator: CodeGenerator) : SymbolProce
             .forEach { declaration ->
                 val itemPackageName = declaration.packageName.asString()
                 val itemClassName = declaration.toClassName()
-                val interfaceName = itemClassName.simpleNames.joinToString("_")
+                val interfaceName = OutputClassPrefix + itemClassName.simpleNames.joinToString("_")
 
-                FileSpec.builder("$OutputPackagePrefix.$itemPackageName", interfaceName)
+                FileSpec.builder(itemPackageName, interfaceName)
                     .addFileComment(
                         FormattedGeneratedMessage,
                         LocalDateTime.now().format(GeneratedDateTimeFormatter),
