@@ -6,13 +6,13 @@ The library requires your app's `minSdk` to be 21+
 - KSP (https://github.com/google/ksp)
 
 ```kotlin
-plugiin {
+plugins {
     alias(libs.plugins.ksp)
 }
 
 dependencies {
-    implementation("me.tawsif.hilt:flexible-hilt-core:0.5.0")
-    ksp("me.tawsif.hilt:flexible-hilt-compiler:0.5.0")
+    implementation("me.tawsif.hilt:flexible-hilt-core:0.60")
+    ksp("me.tawsif.hilt:flexible-hilt-compiler:0.60")
 }
 ```
 
