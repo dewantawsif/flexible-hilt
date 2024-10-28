@@ -2,7 +2,7 @@
 android-gradle = "8.7.1"
 dagger-hilt = "2.52"
 kotlin = "2.0.21"
-kotlinpoet = "1.18.1"
+kotlinpoet = "2.0.0"
 ksp = "2.0.21-1.0.25"
 
 activity-compose = "1.9.3"
