@@ -9,6 +9,11 @@
         "com.google.devtools.ksp",
         "org.jetbrains.kotlin.",
       ],
+    },
+    {
+      "groupName": "GitHub Actions",
+      "matchManagers": ["github-actions"],
+      "pinDigests": true,
     }
   ]
 }
