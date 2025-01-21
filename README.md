@@ -11,8 +11,8 @@ plugins {
 }
 
 dependencies {
-    implementation("me.tawsif.hilt:flexible-hilt-core:0.60")
-    ksp("me.tawsif.hilt:flexible-hilt-compiler:0.60")
+    implementation("me.tawsif.hilt:flexible-hilt-core:0.7.0")
+    ksp("me.tawsif.hilt:flexible-hilt-compiler:0.7.0")
 }
 ```
 
