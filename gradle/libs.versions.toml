@@ -1,9 +1,9 @@
 [versions]
 android-gradle = "8.8.0"
 dagger-hilt = "2.57.2"
-kotlin = "2.2.0"
+kotlin = "2.2.20"
 kotlinpoet = "2.2.0"
-ksp = "2.2.0-2.0.2"
+ksp = "2.2.20-2.0.4"
 
 activity-compose = "1.10.1"
 androidx-startup-runtime = "1.2.0"
