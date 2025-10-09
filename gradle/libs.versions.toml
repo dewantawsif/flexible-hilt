@@ -9,7 +9,7 @@ activity-compose = "1.10.1"
 androidx-startup-runtime = "1.2.0"
 compose-bom = "2025.10.00"
 
-maven-publish = "0.30.0"
+maven-publish = "0.34.0"
 
 detekt = "1.23.8"
 spotless = "8.0.0"
