@@ -12,7 +12,7 @@ compose-bom = "2025.10.00"
 maven-publish = "0.30.0"
 
 detekt = "1.23.8"
-spotless = "7.2.1"
+spotless = "8.0.0"
 ktlint-core = "1.7.1"
 
 [libraries]
