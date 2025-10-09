@@ -5,7 +5,7 @@ kotlin = "2.2.20"
 kotlinpoet = "2.2.0"
 ksp = "2.2.20-2.0.4"
 
-activity-compose = "1.10.1"
+activity-compose = "1.11.0"
 androidx-startup-runtime = "1.2.0"
 compose-bom = "2025.10.00"
 
